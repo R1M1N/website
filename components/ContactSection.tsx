@@ -16,20 +16,20 @@ export function ContactSection() {
       icon: Linkedin,
       label: 'LinkedIn',
       value: 'Connect on LinkedIn',
-      href: '#',
+      href: 'https://www.linkedin.com/in/raman-thakur-24095022a/',
       color: 'text-neon-blue'
     },
     {
       icon: Github,
       label: 'GitHub',
       value: 'View Projects',
-      href: '#',
+      href: 'https://github.com/R1M1N',
       color: 'text-neon-green'
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'India (IST)',
+      value: '(GMT + 5:30)',
       href: null,
       color: 'text-neon-purple'
     },
@@ -189,11 +189,8 @@ export function ContactSection() {
           viewport={{ once: true }}
           className="mt-20 pt-8 border-t border-glass-border text-center"
         >
-          <p className="text-text-secondary">
-            Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion
-          </p>
-          <p className="text-meta text-text-secondary mt-2">
-            © 2024 Raman Thakur. All rights reserved.
+          <p className="text-meta text-text-secondary">
+            © 2025 Raman Thakur. All rights reserved.
           </p>
         </motion.div>
       </div>

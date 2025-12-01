@@ -208,14 +208,6 @@ Update the following files:
 - Safari 14+
 - Edge 90+
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
@@ -223,9 +215,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 - **Email**: raman1801thakur@gmail.com
-- **LinkedIn**: [Your LinkedIn URL]
-- **GitHub**: [Your GitHub URL]
+- **LinkedIn**: https://www.linkedin.com/in/raman-thakur-24095022a/
+- **GitHub**: https://github.com/R1M1N
 
 ---
-
-Built with ❤️ using Next.js, TypeScript, Tailwind CSS, and Framer Motion.

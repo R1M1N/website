@@ -1,15 +1,16 @@
+// lib/agents.ts
 export interface AIAgent {
   id: string;
   name: string;
   tagline: string;
   description: string;
   icon: string;
-  color: 'cyan' | 'purple' | 'green' | 'blue';
+  color: 'cyan' | 'purple' | 'green' | 'blue' | 'orange' | 'pink' | 'indigo' | 'teal' | 'yellow' | 'red';
   position: { x: number; y: number };
   techStack: string[];
   features: string[];
   status: 'live' | 'beta' | 'development';
-  githubUrl?: string;
+  githubUrl: string;  // Changed from optional to required
   demoUrl?: string;
   metrics?: {
     label: string;
@@ -19,234 +20,256 @@ export interface AIAgent {
 
 export const aiAgents: AIAgent[] = [
   {
-    id: 'ai-call-receiver',
-    name: 'AI Call Receiver',
-    tagline: '24/7 Autonomous Voice Agent',
-    description: 'Intelligent voice agent that handles customer calls, schedules appointments, and manages inquiries with natural language processing.',
-    icon: 'Phone',
-    color: 'cyan',
-    position: { x: 200, y: 150 },
-    techStack: ['OpenAI Whisper', 'ElevenLabs', 'FastAPI', 'WebRTC'],
+    id: 'pentest-agent',
+    name: 'Pentesting AI Agent',
+    tagline: 'Automated Security Auditor',
+    description: 'AI-powered penetration testing tool with a natural language interface. Automates wireless analysis, password cracking, and vulnerability scanning using industry-standard tools.',
+    icon: 'Lock',
+    color: 'orange',
+    position: { x: 350, y: 400 },
+    techStack: ['Python', 'Aircrack-ng', 'Hashcat', 'NLP', 'Nmap', 'Hydra', 'SQLMap'],
     features: [
-      'Natural language understanding',
-      'Context-aware responses',
-      'CRM integration',
-      'Multi-language support'
-    ],
-    status: 'live',
-    demoUrl: '#',
-    metrics: [
-      { label: 'Uptime', value: '99.9%' },
-      { label: 'Response Time', value: '<100ms' }
-    ]
-  },
-  {
-    id: 'web-scraper',
-    name: 'Universal Web Scraper',
-    tagline: 'Firecrawl Alternative',
-    description: 'Production-ready web scraping framework with JavaScript rendering, OCR, and AI-powered data extraction.',
-    icon: 'Spider',
-    color: 'purple',
-    position: { x: 450, y: 100 },
-    techStack: ['Playwright', 'BeautifulSoup', 'GPT-4', 'FastAPI'],
-    features: [
-      'JavaScript rendering',
-      'AI-powered extraction',
-      'Rate limiting',
-      'Proxy rotation'
+      'Natural language command interface',
+      'Automated wireless network analysis',
+      'Intelligent password cracking',
+      'Multi-tool orchestration (Nmap, Hydra)',
+      'Vulnerability assessment reports',
+      'Workflow automation'
     ],
     status: 'beta',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/R1M1N/pentesting-agent',
     metrics: [
-      { label: 'Requests/sec', value: '10,000+' },
-      { label: 'Success Rate', value: '95%' }
+      { label: 'Tools Supported', value: '10+' },
+      { label: 'Automation', value: 'Full' }
     ]
   },
   {
-    id: 'vision-ai',
-    name: 'Vision AI Agent',
-    tagline: 'Computer Vision Platform',
-    description: 'Comprehensive computer vision system for document analysis, object detection, and automated image processing.',
-    icon: 'Eye',
-    color: 'green',
-    position: { x: 700, y: 180 },
-    techStack: ['YOLOv8', 'SAM', 'OpenCV', 'FastAPI'],
+    id: 'ai-call-receiver',
+    name: 'AI Call Receiver',
+    tagline: 'Automated Voice Intelligence',
+    description: 'Intelligent phone assistant for automated call handling, scheduling, and document processing. Integrates Google Calendar/Outlook for appointment management and uses Whisper for precise voice transcription.',
+    icon: 'Phone',
+    color: 'cyan',
+    position: { x: 150, y: 100 },
+    techStack: ['Python', 'FastAPI', 'Twilio', 'Transformers', 'Whisper', 'Google Calendar API'],
     features: [
-      'Real-time object detection',
-      'Document analysis',
-      'Image segmentation',
-      'Batch processing'
+      'Automated call handling & routing',
+      'Real-time voice transcription (Whisper)',
+      'Smart appointment scheduling',
+      'Multi-model support (OpenAI, Gemini, Claude)',
+      'Smart reply generation',
+      'Document processing integration'
     ],
     status: 'live',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/R1M1N/phone_assistant_agent',
     metrics: [
-      { label: 'Detection Accuracy', value: '92%' },
-      { label: 'Processing Speed', value: '<50ms' }
+      { label: 'Response Latency', value: '<200ms' },
+      { label: 'Transcription Acc', value: '98.5%' }
     ]
   },
   {
     id: 'nexus-guard',
     name: 'NEXUS GUARD',
-    tagline: 'Enterprise Cybersecurity Platform',
-    description: 'AI-powered cybersecurity platform with multi-modal threat detection, federated learning, and blockchain audit system.',
+    tagline: 'Enterprise AI Cybersecurity',
+    description: 'Advanced cybersecurity platform featuring multi-modal threat detection, federated learning for privacy, and a blockchain-based immutable audit system.',
     icon: 'Shield',
     color: 'blue',
-    position: { x: 150, y: 350 },
-    techStack: ['Python', 'FastAPI', 'PyTorch', 'Blockchain'],
+    position: { x: 100, y: 350 },
+    techStack: ['Python', 'FastAPI', 'PyTorch', 'Blockchain', 'Federated Learning', 'LSTM'],
     features: [
       'Multi-modal threat detection',
-      'Federated learning network',
-      'Blockchain audit system',
-      'Automated response'
+      'Privacy-preserving federated learning',
+      'Blockchain immutable audit logs',
+      'Smart contract automation',
+      'LSTM behavioral analysis',
+      'Automated response orchestration'
     ],
     status: 'development',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/R1M1N/nexus-guard',
     metrics: [
-      { label: 'Threat Detection', value: '<1s' },
-      { label: 'Accuracy', value: '98%' }
-    ]
-  },
-  {
-    id: 'pentest-agent',
-    name: 'Pentesting AI Agent',
-    tagline: 'Automated Security Testing',
-    description: 'AI-powered penetration testing tool with natural language interface for automated security assessments.',
-    icon: 'Lock',
-    color: 'purple',
-    position: { x: 400, y: 400 },
-    techStack: ['Python', 'Aircrack-ng', 'Hashcat', 'NLP'],
-    features: [
-      'Wireless network analysis',
-      'Password cracking',
-      'Security assessments',
-      'Multi-tool integration'
-    ],
-    status: 'beta',
-    githubUrl: '#',
-    metrics: [
-      { label: 'Scan Speed', value: '50+ tools' },
-      { label: 'Accuracy', value: '94%' }
+      { label: 'Detection Time', value: '<1s' },
+      { label: 'Accuracy', value: '99%' }
     ]
   },
   {
     id: 'trading-system',
     name: 'Live Trading System',
-    tagline: 'Cryptocurrency Automation',
-    description: 'Production-ready automated Bitcoin trading system with real-time monitoring and multi-strategy portfolio management.',
+    tagline: 'Production Crypto Trading',
+    description: 'Production-ready automated Bitcoin trading system featuring four proven strategies (Grid, Momentum, Arbitrage, DCA) and a dynamic selection engine optimizing for market conditions.',
     icon: 'TrendingUp',
-    color: 'green',
+    color: 'teal',
     position: { x: 650, y: 380 },
-    techStack: ['Python', 'Binance API', 'SQLite', 'TA-Lib'],
+    techStack: ['Python', 'Binance API', 'SQLite', 'Pandas', 'TA-Lib', 'WebSockets'],
     features: [
-      'Four trading strategies',
-      'Real-time monitoring',
-      'Risk management',
-      'Performance analytics'
+      '4 Strategy Engine (Grid, Momentum, Arb, DCA)',
+      'Dynamic strategy selection',
+      'Real-time profit tracking dashboard',
+      'Risk management protocols',
+      'Backtesting engine',
+      'Live market monitoring'
     ],
     status: 'live',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/R1M1N/tradesant',
     metrics: [
-      { label: 'Profit Rate', value: '+15%' },
-      { label: 'Uptime', value: '99.8%' }
+      { label: 'Backtest Return', value: '+ve' },
+      { label: 'Strategies', value: '4' }
     ]
   },
   {
     id: 'research-explainer',
     name: 'Research Paper Explainer',
-    tagline: 'Multi-Agent Research System',
-    description: 'AI system for comprehensive research paper analysis with dual explanation levels and semantic search.',
+    tagline: 'Multi-Agent Analysis System',
+    description: 'Comprehensive research analysis system offering dual explanation levels (simple & technical). Features diagram analysis, semantic search, and paper comparison capabilities.',
     icon: 'BookOpen',
-    color: 'cyan',
-    position: { x: 100, y: 550 },
-    techStack: ['Python', 'FastAPI', 'LangGraph', 'FAISS'],
+    color: 'pink',
+    position: { x: 150, y: 580 },
+    techStack: ['Python', 'FastAPI', 'React', 'LangGraph', 'FAISS', 'OpenAI'],
     features: [
-      'Dual explanation levels',
-      'Diagram analysis',
-      'Paper comparison',
-      'Semantic search'
+      'Dual explanation levels (Simple/Technical)',
+      'Diagram & figure analysis',
+      'Paper comparison engine',
+      'Vector-based semantic search',
+      'Real-time WebSocket updates',
+      'Citation tracking'
     ],
     status: 'beta',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/R1M1N/research_paper_explainer',
     metrics: [
-      { label: 'Accuracy', value: '92%' },
-      { label: 'Speed', value: '<2s' }
-    ]
-  },
-  {
-    id: 'secure-messaging',
-    name: 'Secure Messaging App',
-    tagline: 'P2P Encrypted Communication',
-    description: 'Cross-platform encrypted messaging app with mesh networking and end-to-end encryption.',
-    icon: 'MessageSquare',
-    color: 'purple',
-    position: { x: 350, y: 600 },
-    techStack: ['Rust', 'Flutter', 'libp2p', 'Signal Protocol'],
-    features: [
-      'End-to-end encryption',
-      'Mesh networking',
-      'Bluetooth support',
-      'Cross-platform'
-    ],
-    status: 'development',
-    githubUrl: '#',
-    metrics: [
-      { label: 'Encryption', value: 'AES-256' },
-      { label: 'Platforms', value: '4+' }
+      { label: 'Processing', value: 'Real-time' },
+      { label: 'Search', value: 'Semantic' }
     ]
   },
   {
     id: 'siya-assistant',
     name: 'S.I.Y.A Enhanced',
-    tagline: 'AI Assistant Platform',
-    description: 'Jarvis-style AI assistant with sub-100ms response times, activity monitoring, and persistent memory.',
+    tagline: 'Jarvis-Style AI Assistant',
+    description: 'High-performance AI assistant with sub-100ms latency. Features activity monitoring, smart work suggestions, persistent memory, and LoRA fine-tuning for personalized responses.',
     icon: 'Bot',
-    color: 'green',
-    position: { x: 600, y: 580 },
-    techStack: ['Python', 'Qwen', 'Transformers', 'SQLite'],
+    color: 'yellow',
+    position: { x: 800, y: 580 },
+    techStack: ['Python', 'Qwen', 'Transformers', 'SQLite', 'FastAPI', 'LoRA'],
     features: [
-      'Sub-100ms responses',
-      'Activity monitoring',
-      'Smart suggestions',
-      'Persistent memory'
+      'Sub-100ms response time',
+      'Intelligent activity monitoring',
+      'Persistent memory (SQLite)',
+      'Smart work suggestions',
+      'Real-time data fetching',
+      'Fine-tuned personality'
     ],
     status: 'beta',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/R1M1N/s.i.y.a',
     metrics: [
-      { label: 'Response Time', value: '<100ms' },
-      { label: 'Memory', value: 'Unlimited' }
+      { label: 'Latency', value: '<100ms' },
+      { label: 'Memory', value: 'Persistent' }
+    ]
+  },
+  {
+    id: 'secure-messaging',
+    name: 'Secure Messaging App',
+    tagline: 'P2P Encrypted Mesh Network',
+    description: 'Cross-platform decentralized messaging app using Rust and Flutter. Features end-to-end encryption (Signal Protocol) and Bluetooth mesh networking for offline communication.',
+    icon: 'MessageSquare',
+    color: 'indigo',
+    position: { x: 500, y: 520 },
+    techStack: ['Rust', 'Flutter', 'libp2p', 'Signal Protocol', 'AES-256-GCM', 'Bluetooth'],
+    features: [
+      'End-to-end encryption (AES-256)',
+      'P2P Mesh networking',
+      'Offline Bluetooth communication',
+      'Cross-platform (iOS, Android, Web)',
+      'AI smart replies (Local LLM)',
+      'No central server'
+    ],
+    status: 'development',
+    githubUrl: 'https://github.com/R1M1N/secure-messaging-app',
+    metrics: [
+      { label: 'Encryption', value: 'Signal' },
+      { label: 'Offline', value: 'Mesh' }
+    ]
+  },
+  {
+    id: 'web-scraper',
+    name: 'Universal Web Scraper',
+    tagline: 'Production-Grade Data Extraction',
+    description: 'High-performance web scraping framework designed as an open-source alternative to Firecrawl. Features intelligent rate limiting, anti-detection mechanisms, and RAG-ready vector storage support.',
+    icon: 'Globe',
+    color: 'purple',
+    position: { x: 500, y: 50 },
+    techStack: ['Python', 'Playwright', 'FastAPI', 'Transformers', 'FAISS', 'ChromaDB'],
+    features: [
+      'JavaScript rendering & execution',
+      'OCR (Tesseract) & Audio (Whisper)',
+      'RAG-ready vector storage output',
+      'Intelligent rate limiting',
+      'Anti-detection mechanisms',
+      'Concurrent processing (10k+ req/s)'
+    ],
+    status: 'beta',
+    githubUrl: 'https://github.com/R1M1N/crawler',
+    metrics: [
+      { label: 'Throughput', value: '10k req/s' },
+      { label: 'Bypass Rate', value: '95%' }
     ]
   },
   {
     id: 'agentic-vision',
     name: 'Agentic Vision',
-    tagline: 'Multi-Model CV System',
-    description: 'Intelligent vision system combining OWL-ViT and SAM for complex multi-step visual instructions.',
+    tagline: 'Interactive Multi-Model CV',
+    description: 'Intelligent vision system combining OWL-ViT for open-vocabulary detection and SAM for precise segmentation. Enables complex multi-step visual reasoning and transformation tasks.',
     icon: 'Camera',
-    color: 'blue',
-    position: { x: 850, y: 450 },
-    techStack: ['Python', 'OWL-ViT', 'SAM', 'PyTorch'],
+    color: 'red',
+    position: { x: 900, y: 350 },
+    techStack: ['Python', 'OWL-ViT', 'SAM', 'PyTorch', 'Gradio', 'FastAPI'],
     features: [
       'Open-vocabulary detection',
-      'Multi-step instructions',
-      'Real-time processing',
-      'Complex transformations'
+      'Precise segmentation (SAM)',
+      'Multi-step visual instructions',
+      'Real-time web interface',
+      'Complex image transformations',
+      'Production deployment ready'
     ],
     status: 'live',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/R1M1N/agentic-vision',
     metrics: [
-      { label: 'Speed Improvement', value: '85%' },
-      { label: 'Accuracy', value: '96%' }
+      { label: 'Efficiency', value: '+85%' },
+      { label: 'Flexibility', value: 'Open-Vocab' }
+    ]
+  },
+  {
+    id: 'vision-ai',
+    name: 'Vision AI Agent',
+    tagline: 'End-to-End Computer Vision',
+    description: 'Comprehensive computer vision platform for data management, model training, and inference. Integrates CVAT for annotation and MLflow for experiment tracking.',
+    icon: 'Eye',
+    color: 'green',
+    position: { x: 850, y: 100 },
+    techStack: ['Python', 'FastAPI', 'YOLO', 'CVAT', 'MLflow', 'Docker', 'ByteTrack'],
+    features: [
+      'CVAT annotation integration',
+      'YOLO training pipeline',
+      'MLflow experiment tracking',
+      'High-performance inference server',
+      'Object tracking (ByteTrack, DeepSORT)',
+      'Real-time monitoring dashboard'
+    ],
+    status: 'live',
+    githubUrl: 'https://github.com/R1M1N/sf-cycle', // Using sf-cycle for this one
+    metrics: [
+      { label: 'Inference', value: 'Real-time' },
+      { label: 'Tracking', value: 'Multi-Object' }
     ]
   }
 ];
 
 export const connectionMap = {
+  'pentest-agent': ['trading-system'],
   'ai-call-receiver': ['web-scraper', 'research-explainer'],
   'web-scraper': ['vision-ai', 'nexus-guard'],
   'vision-ai': ['agentic-vision', 'trading-system'],
   'nexus-guard': ['pentest-agent', 'secure-messaging'],
-  'pentest-agent': ['trading-system'],
   'research-explainer': ['siya-assistant'],
   'secure-messaging': ['siya-assistant'],
+  'trading-system': [],
+  'siya-assistant': [],
   'agentic-vision': []
 };

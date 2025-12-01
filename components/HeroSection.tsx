@@ -9,17 +9,17 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center z-10">
-      <div className="container mx-auto px-4 text-center">
+    <section className="relative min-h-screen flex flex-col items-center justify-center z-10 py-20 overflow-hidden">
+      <div className="container mx-auto px-4 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
-          {/* Animated name */}
+          {/* 1. Animated Name */}
           <motion.h1 
-            className="text-hero text-text-primary mb-6"
+            className="text-6xl md:text-8xl font-bold text-text-primary mb-6 tracking-tight"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 1 }}
@@ -30,57 +30,74 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index, duration: 0.5 }}
-                className="inline-block"
+                className="inline-block hover:text-neon-cyan transition-colors duration-300 cursor-default"
               >
-                {letter}
+                {letter === ' ' ? '\u00A0' : letter}
               </motion.span>
             ))}
           </motion.h1>
 
-          {/* Animated subtitle */}
+          {/* 2. Animated Subtitle */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="relative"
+            className="relative mb-8"
           >
-            <h2 className="text-section text-text-primary mb-4">
+            <h2 className="text-2xl md:text-3xl text-neon-cyan font-medium tracking-wide">
               Senior AI Engineer
             </h2>
             <motion.div
-              className="absolute inset-0 bg-neon-cyan opacity-20 blur-xl"
-              animate={{
-                opacity: [0.2, 0.4, 0.2],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
+              className="absolute inset-0 bg-neon-cyan/20 blur-xl"
+              animate={{ opacity: [0.2, 0.4, 0.2] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
           </motion.div>
 
-          {/* Description */}
+          {/* 3. Description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.2, duration: 0.8 }}
-            className="text-xl text-text-secondary mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-text-secondary mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            Building autonomous AI systems for real-world applications. 
-            Specializing in computer vision, NLP, cybersecurity, and multi-agent architectures.
+            Building autonomous AI systems for real-world applications. Specializing in computer vision, NLP, 
+            cybersecurity, and multi-agent architectures. Opensource and decentralized architecture.
           </motion.p>
 
-          {/* CTA Button */}
+          {/* 4. Stats Container - Positioned BELOW description in flow */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.5, duration: 0.8 }}
+            className="flex flex-col xl:flex-row items-center justify-center gap-8 xl:gap-0 mb-16 w-full"
+          >
+            {/* LEFT GROUP */}
+            <div className="flex gap-6 justify-end xl:w-1/3 xl:pr-4">
+              <StatCard value="10+" label="AI Agents Built" delay={2.6} />
+              <StatCard value="2+" label="Years Experience" delay={2.7} />
+            </div>
+
+            {/* SPACER: Width matches the name 'Raman Thakur' to create the frame effect */}
+            <div className="hidden xl:block w-[500px] shrink-0" />
+
+            {/* RIGHT GROUP */}
+            <div className="flex gap-6 justify-start xl:w-1/3 xl:pl-4">
+              <StatCard value="30+" label="Opensource Projects" delay={2.8} />
+              <StatCard value="100+" label="Trained & Finetuned" delay={2.9} />
+            </div>
+          </motion.div>
+
+          {/* 5. CTA Button */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 2.8, duration: 0.6 }}
+            transition={{ delay: 3.0, duration: 0.6 }}
             className="flex justify-center"
           >
             <button
               onClick={scrollToMindMap}
-              className="pill-button group flex items-center gap-2 text-lg"
+              className="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neon-cyan to-neon-blue text-bg-primary font-bold rounded-full hover:shadow-[0_0_20px_rgba(0,255,255,0.4)] transition-all duration-300"
             >
               Explore My Work
               <motion.div
@@ -91,33 +108,34 @@ export function HeroSection() {
               </motion.div>
             </button>
           </motion.div>
-        </motion.div>
 
-        {/* Floating stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.2, duration: 0.8 }}
-          className="absolute bottom-20 left-1/2 transform -translate-x-1/2 hidden lg:flex gap-8"
-        >
-          {[
-            { value: '10+', label: 'AI Agents Built' },
-            { value: '2+', label: 'Years Experience' },
-            { value: '99.9%', label: 'Uptime' }
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.5 + index * 0.2, duration: 0.6 }}
-              className="glass-card px-6 py-4 rounded-glass text-center"
-            >
-              <div className="text-2xl font-bold text-neon-cyan mb-1">{stat.value}</div>
-              <div className="text-sm text-text-secondary">{stat.label}</div>
-            </motion.div>
-          ))}
         </motion.div>
       </div>
     </section>
+  )
+}
+
+// Reusable Glassmorphism Card Component
+function StatCard({ value, label, delay }: { value: string, label: string, delay: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+      transition={{ delay, duration: 0.5 }}
+      // GLASSMORPHISM CLASSES APPLIED HERE:
+      // bg-white/5 = 5% opacity white background
+      // backdrop-blur-md = Blurs the content behind the card
+      // border-white/10 = Subtle white border
+      // shadow-lg = Drop shadow for depth
+      className="flex flex-col items-center justify-center px-8 py-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl min-w-[160px] shadow-lg hover:border-neon-cyan/30 hover:shadow-neon-cyan/10 transition-all duration-300"
+    >
+      <div className="text-4xl font-bold text-neon-cyan mb-2 drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]">
+        {value}
+      </div>
+      <div className="text-sm text-text-secondary font-medium text-center uppercase tracking-wider max-w-[120px]">
+        {label}
+      </div>
+    </motion.div>
   )
 }

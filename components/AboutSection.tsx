@@ -56,9 +56,9 @@ export function AboutSection() {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 gap-8 mb-16"
         >
-          <div className="glass-card p-lg rounded-glass">
+          <div className="glass-card p-lg rounded-glass hover:shadow-glow-cyan transition-all duration-300">
             <h3 className="text-xl font-semibold text-text-primary mb-4">
-              Current Role
+              Previous Role
             </h3>
             <h4 className="text-neon-cyan font-medium mb-2">
               AI Growth Engineer at Labellerr
@@ -70,7 +70,7 @@ export function AboutSection() {
             </p>
           </div>
 
-          <div className="glass-card p-lg rounded-glass">
+          <div className="glass-card p-lg rounded-glass hover:shadow-glow-green transition-all duration-300">
             <h3 className="text-xl font-semibold text-text-primary mb-4">
               Education
             </h3>
@@ -121,7 +121,7 @@ export function AboutSection() {
           })}
         </motion.div>
 
-        {/* Achievements */}
+        {/* Technical Focus */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -130,13 +130,13 @@ export function AboutSection() {
           className="mt-16 text-center"
         >
           <h3 className="text-2xl font-semibold text-text-primary mb-8">
-            Key Achievements
+            Technical Excellence
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { value: '500+', label: 'Developers Served' },
-              { value: '92%', label: 'Retrieval Accuracy' },
-              { value: '750+', label: 'Technical Articles' }
+              { value: 'Production', label: 'Ready AI Systems', description: 'Scalable & Robust' },
+              { value: 'Real-time', label: 'Performance', description: 'Low-latency Processing' },
+              { value: 'Open', label: 'Source First', description: 'Community Driven' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -149,8 +149,11 @@ export function AboutSection() {
                 <div className="text-3xl font-bold text-neon-cyan mb-2">
                   {stat.value}
                 </div>
-                <div className="text-text-secondary">
+                <div className="text-text-primary font-medium mb-1">
                   {stat.label}
+                </div>
+                <div className="text-text-secondary text-sm">
+                  {stat.description}
                 </div>
               </motion.div>
             ))}

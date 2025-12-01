@@ -11,35 +11,36 @@ export function MindMap() {
   const [selectedAgent, setSelectedAgent] = useState<AIAgent | null>(null)
 
   return (
-    <section id="mindmap" className="relative min-h-screen py-20 z-10">
+    <section id="mindmap" className="relative min-h-screen py-20 z-10 flex items-center justify-center bg-bg-primary overflow-hidden">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
+        
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-section text-text-primary mb-6">
-            AI Agent Portfolio
+          <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
+            AI Agent <span className="text-neon-cyan">Portfolio</span>
           </h2>
-          <p className="text-body text-text-secondary max-w-2xl mx-auto">
-            Explore my collection of autonomous AI agents. Hover over each node to discover 
-            detailed information, technical specifications, and live demonstrations.
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+            Explore my collection of autonomous AI agents. Hover over each node to see technical details.
           </p>
         </motion.div>
 
-        {/* Mind Map Container */}
-        <div className="relative h-[800px] w-full overflow-hidden">
-          {/* Connection Lines */}
+        {/* Mind Map Container - Centered Width */}
+        <div className="relative h-[700px] w-full max-w-[1000px] mx-auto border border-white/5 rounded-3xl bg-white/2 backdrop-blur-sm">
+          
+          {/* Connection Lines Layer */}
           <ConnectionLines 
             agents={aiAgents}
             connections={connectionMap}
             hoveredAgent={hoveredAgent}
           />
 
-          {/* Agent Nodes */}
+          {/* Agent Nodes Layer */}
           {aiAgents.map((agent) => (
             <AgentNode
               key={agent.id}
@@ -52,18 +53,6 @@ export function MindMap() {
           ))}
         </div>
 
-        {/* Instructions */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mt-8"
-        >
-          <p className="text-meta text-text-secondary">
-            Hover over agents to explore • Click to select • Scroll to navigate
-          </p>
-        </motion.div>
       </div>
     </section>
   )
