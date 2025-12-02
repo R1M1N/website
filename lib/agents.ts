@@ -1,4 +1,3 @@
-// lib/agents.ts
 export interface AIAgent {
   id: string;
   name: string;
@@ -10,7 +9,7 @@ export interface AIAgent {
   techStack: string[];
   features: string[];
   status: 'live' | 'beta' | 'development';
-  githubUrl: string;  // Changed from optional to required
+  githubUrl: string;
   demoUrl?: string;
   metrics?: {
     label: string;
@@ -211,33 +210,35 @@ export const aiAgents: AIAgent[] = [
       { label: 'Bypass Rate', value: '95%' }
     ]
   },
+  // REPLACED: Agentic Vision -> Advanced Coding Agent (sf-cycle)
   {
-    id: 'agentic-vision',
-    name: 'Agentic Vision',
-    tagline: 'Interactive Multi-Model CV',
-    description: 'Intelligent vision system combining OWL-ViT for open-vocabulary detection and SAM for precise segmentation. Enables complex multi-step visual reasoning and transformation tasks.',
-    icon: 'Camera',
+    id: 'sf-cycle',
+    name: 'Advanced Coding Agent',
+    tagline: 'Automated SDLC Platform',
+    description: 'A comprehensive AI agent that handles the complete software development lifecycle. Transforms natural language queries into fully functional software projects with automated planning, development, testing, deployment, and maintenance.',
+    icon: 'Code',
     color: 'red',
-    position: { x: 900, y: 350 },
-    techStack: ['Python', 'OWL-ViT', 'SAM', 'PyTorch', 'Gradio', 'FastAPI'],
+    position: { x: 900, y: 350 }, // Middle Right
+    techStack: ['Python', 'FastAPI', 'React', 'Docker', 'Kubernetes', 'PyTest'],
     features: [
-      'Open-vocabulary detection',
-      'Precise segmentation (SAM)',
-      'Multi-step visual instructions',
-      'Real-time web interface',
-      'Complex image transformations',
-      'Production deployment ready'
+      'Natural Language to Code',
+      'Automated Feasibility Check',
+      'Library Discovery Engine',
+      'Comprehensive Testing Suite',
+      'Auto-Deployment Setup',
+      'Maintenance Monitoring'
     ],
     status: 'live',
-    githubUrl: 'https://github.com/R1M1N/agentic-vision',
+    githubUrl: 'https://github.com/R1M1N/sf-cycle',
     metrics: [
-      { label: 'Efficiency', value: '+85%' },
-      { label: 'Flexibility', value: 'Open-Vocab' }
+      { label: 'Dev Time', value: '~240 min' },
+      { label: 'Coverage', value: 'Full SDLC' }
     ]
   },
+  // RENAMED: Vision AI Agent -> Viseon
   {
     id: 'vision-ai',
-    name: 'Vision AI Agent',
+    name: 'Viseon',
     tagline: 'End-to-End Computer Vision',
     description: 'Comprehensive computer vision platform for data management, model training, and inference. Integrates CVAT for annotation and MLflow for experiment tracking.',
     icon: 'Eye',
@@ -253,7 +254,7 @@ export const aiAgents: AIAgent[] = [
       'Real-time monitoring dashboard'
     ],
     status: 'live',
-    githubUrl: 'https://github.com/R1M1N/sf-cycle', // Using sf-cycle for this one
+    githubUrl: 'https://github.com/R1M1N/agentic-vision', // Swap confirmed: Viseon gets agentic-vision repo
     metrics: [
       { label: 'Inference', value: 'Real-time' },
       { label: 'Tracking', value: 'Multi-Object' }
@@ -265,11 +266,11 @@ export const connectionMap = {
   'pentest-agent': ['trading-system'],
   'ai-call-receiver': ['web-scraper', 'research-explainer'],
   'web-scraper': ['vision-ai', 'nexus-guard'],
-  'vision-ai': ['agentic-vision', 'trading-system'],
+  'vision-ai': ['sf-cycle', 'trading-system'], // Updated connection to new ID
   'nexus-guard': ['pentest-agent', 'secure-messaging'],
   'research-explainer': ['siya-assistant'],
   'secure-messaging': ['siya-assistant'],
   'trading-system': [],
   'siya-assistant': [],
-  'agentic-vision': []
+  'sf-cycle': [] // Updated ID
 };
