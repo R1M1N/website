@@ -20,7 +20,7 @@ export interface AIAgent {
 export const aiAgents: AIAgent[] = [
   {
     id: 'pentest-agent',
-    name: 'Pentesting AI Agent',
+    name: 'Viper',
     tagline: 'Automated Security Auditor',
     description: 'AI-powered penetration testing tool with a natural language interface. Automates wireless analysis, password cracking, and vulnerability scanning using industry-standard tools.',
     icon: 'Lock',
@@ -44,7 +44,7 @@ export const aiAgents: AIAgent[] = [
   },
   {
     id: 'ai-call-receiver',
-    name: 'AI Call Receiver',
+    name: 'Aegis',
     tagline: 'Automated Voice Intelligence',
     description: 'Intelligent phone assistant for automated call handling, scheduling, and document processing. Integrates Google Calendar/Outlook for appointment management and uses Whisper for precise voice transcription.',
     icon: 'Phone',
@@ -68,7 +68,7 @@ export const aiAgents: AIAgent[] = [
   },
   {
     id: 'nexus-guard',
-    name: 'NEXUS GUARD',
+    name: 'Paladin',
     tagline: 'Enterprise AI Cybersecurity',
     description: 'Advanced cybersecurity platform featuring multi-modal threat detection, federated learning for privacy, and a blockchain-based immutable audit system.',
     icon: 'Shield',
@@ -92,7 +92,7 @@ export const aiAgents: AIAgent[] = [
   },
   {
     id: 'trading-system',
-    name: 'Live Trading System',
+    name: 'Tesseract',
     tagline: 'Production Crypto Trading',
     description: 'Production-ready automated Bitcoin trading system featuring four proven strategies (Grid, Momentum, Arbitrage, DCA) and a dynamic selection engine optimizing for market conditions.',
     icon: 'TrendingUp',
@@ -116,7 +116,7 @@ export const aiAgents: AIAgent[] = [
   },
   {
     id: 'research-explainer',
-    name: 'Research Paper Explainer',
+    name: 'Lexis',
     tagline: 'Multi-Agent Analysis System',
     description: 'Comprehensive research analysis system offering dual explanation levels (simple & technical). Features diagram analysis, semantic search, and paper comparison capabilities.',
     icon: 'BookOpen',
@@ -140,8 +140,8 @@ export const aiAgents: AIAgent[] = [
   },
   {
     id: 'siya-assistant',
-    name: 'S.I.Y.A Enhanced',
-    tagline: 'Jarvis-Style AI Assistant',
+    name: 'S.I.YA',
+    tagline: 'Simply Intended Yet Astute Assistant',
     description: 'High-performance AI assistant with sub-100ms latency. Features activity monitoring, smart work suggestions, persistent memory, and LoRA fine-tuning for personalized responses.',
     icon: 'Bot',
     color: 'yellow',
@@ -164,7 +164,7 @@ export const aiAgents: AIAgent[] = [
   },
   {
     id: 'secure-messaging',
-    name: 'Secure Messaging App',
+    name: 'Cipher',
     tagline: 'P2P Encrypted Mesh Network',
     description: 'Cross-platform decentralized messaging app using Rust and Flutter. Features end-to-end encryption (Signal Protocol) and Bluetooth mesh networking for offline communication.',
     icon: 'MessageSquare',
@@ -188,7 +188,7 @@ export const aiAgents: AIAgent[] = [
   },
   {
     id: 'web-scraper',
-    name: 'Universal Web Scraper',
+    name: 'Maestro',
     tagline: 'Production-Grade Data Extraction',
     description: 'High-performance web scraping framework designed as an open-source alternative to Firecrawl. Features intelligent rate limiting, anti-detection mechanisms, and RAG-ready vector storage support.',
     icon: 'Globe',
@@ -210,15 +210,14 @@ export const aiAgents: AIAgent[] = [
       { label: 'Bypass Rate', value: '95%' }
     ]
   },
-  // REPLACED: Agentic Vision -> Advanced Coding Agent (sf-cycle)
   {
     id: 'sf-cycle',
-    name: 'Advanced Coding Agent',
+    name: 'Axiom',
     tagline: 'Automated SDLC Platform',
     description: 'A comprehensive AI agent that handles the complete software development lifecycle. Transforms natural language queries into fully functional software projects with automated planning, development, testing, deployment, and maintenance.',
     icon: 'Code',
     color: 'red',
-    position: { x: 900, y: 350 }, // Middle Right
+    position: { x: 900, y: 350 },
     techStack: ['Python', 'FastAPI', 'React', 'Docker', 'Kubernetes', 'PyTest'],
     features: [
       'Natural Language to Code',
@@ -231,14 +230,13 @@ export const aiAgents: AIAgent[] = [
     status: 'live',
     githubUrl: 'https://github.com/R1M1N/sf-cycle',
     metrics: [
-      { label: 'Dev Time', value: '~240 min' },
+      { label: 'Dev Time', value: '2-5 min' },
       { label: 'Coverage', value: 'Full SDLC' }
     ]
   },
-  // RENAMED: Vision AI Agent -> Viseon
   {
     id: 'vision-ai',
-    name: 'Viseon',
+    name: 'Iris',
     tagline: 'End-to-End Computer Vision',
     description: 'Comprehensive computer vision platform for data management, model training, and inference. Integrates CVAT for annotation and MLflow for experiment tracking.',
     icon: 'Eye',
@@ -254,7 +252,7 @@ export const aiAgents: AIAgent[] = [
       'Real-time monitoring dashboard'
     ],
     status: 'live',
-    githubUrl: 'https://github.com/R1M1N/agentic-vision', // Swap confirmed: Viseon gets agentic-vision repo
+    githubUrl: 'https://github.com/R1M1N/agentic-vision',
     metrics: [
       { label: 'Inference', value: 'Real-time' },
       { label: 'Tracking', value: 'Multi-Object' }
@@ -266,11 +264,11 @@ export const connectionMap = {
   'pentest-agent': ['trading-system'],
   'ai-call-receiver': ['web-scraper', 'research-explainer'],
   'web-scraper': ['vision-ai', 'nexus-guard'],
-  'vision-ai': ['sf-cycle', 'trading-system'], // Updated connection to new ID
+  'vision-ai': ['sf-cycle', 'trading-system'],
   'nexus-guard': ['pentest-agent', 'secure-messaging'],
   'research-explainer': ['siya-assistant'],
   'secure-messaging': ['siya-assistant'],
   'trading-system': [],
   'siya-assistant': [],
-  'sf-cycle': [] // Updated ID
+  'sf-cycle': []
 };
