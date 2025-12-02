@@ -1,9 +1,12 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Linkedin, Github, MapPin, Clock } from 'lucide-react'
+import { Mail, Linkedin, Github, MapPin, Clock, Send, Loader2 } from 'lucide-react'
 
 export function ContactSection() {
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+
   const contactInfo = [
     {
       icon: Mail,
@@ -41,6 +44,33 @@ export function ContactSection() {
       color: 'text-neon-cyan'
     }
   ]
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setStatus('submitting')
+    
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    
+    try {
+      const response = await fetch('https://formspree.io/f/xeoykkky', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+
+      if (response.ok) {
+        setStatus('success')
+        form.reset()
+      } else {
+        setStatus('error')
+      }
+    } catch (error) {
+      setStatus('error')
+    }
+  }
 
   return (
     <section id="contact" className="relative py-20 z-10">
@@ -96,7 +126,7 @@ export function ContactSection() {
                 )
 
                 return item.href ? (
-                  <a key={index} href={item.href} className="block">
+                  <a key={index} href={item.href} target="_blank" rel="noopener noreferrer" className="block">
                     {content}
                   </a>
                 ) : (
@@ -120,13 +150,15 @@ export function ContactSection() {
                 Send a Message
               </h3>
               
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-text-primary mb-2">
                     Name
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    required
                     className="w-full px-4 py-3 bg-bg-secondary border border-glass-border rounded-lg text-text-primary placeholder-text-secondary focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan focus:outline-none transition-colors"
                     placeholder="Your name"
                   />
@@ -138,6 +170,8 @@ export function ContactSection() {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    required
                     className="w-full px-4 py-3 bg-bg-secondary border border-glass-border rounded-lg text-text-primary placeholder-text-secondary focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan focus:outline-none transition-colors"
                     placeholder="your@email.com"
                   />
@@ -147,7 +181,7 @@ export function ContactSection() {
                   <label className="block text-sm font-medium text-text-primary mb-2">
                     Project Type
                   </label>
-                  <select className="w-full px-4 py-3 bg-bg-secondary border border-glass-border rounded-lg text-text-primary focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan focus:outline-none transition-colors">
+                  <select name="projectType" className="w-full px-4 py-3 bg-bg-secondary border border-glass-border rounded-lg text-text-primary focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan focus:outline-none transition-colors">
                     <option value="">Select project type</option>
                     <option value="full-time">Full-time Position</option>
                     <option value="contract">Contract Work</option>
@@ -162,6 +196,8 @@ export function ContactSection() {
                     Message
                   </label>
                   <textarea
+                    name="message"
+                    required
                     rows={4}
                     className="w-full px-4 py-3 bg-bg-secondary border border-glass-border rounded-lg text-text-primary placeholder-text-secondary focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan focus:outline-none transition-colors resize-none"
                     placeholder="Tell me about your project or opportunity..."
@@ -170,12 +206,31 @@ export function ContactSection() {
                 
                 <motion.button
                   type="submit"
-                  className="w-full pill-button text-lg"
+                  disabled={status === 'submitting' || status === 'success'}
+                  className="w-full pill-button text-lg flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Send Message
+                  {status === 'submitting' ? (
+                    <>
+                      <Loader2 size={20} className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : status === 'success' ? (
+                    <>
+                      <Send size={20} />
+                      Message Sent!
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </motion.button>
+
+                {status === 'error' && (
+                  <p className="text-red-400 text-sm text-center">
+                    Something went wrong. Please try again later.
+                  </p>
+                )}
               </form>
             </div>
           </motion.div>
