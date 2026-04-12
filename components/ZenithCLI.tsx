@@ -6,8 +6,8 @@ import { Terminal } from 'lucide-react'
 import { aiAgents } from '@/lib/agents'
 
 interface ZenithCLIProps {
-  onFilter: (agentIds: string[] | null) => void
-  onResponse: (lines: string[]) => void
+  onFilter?: (agentIds: string[] | null) => void
+  onResponse?: (lines: string[]) => void
 }
 
 // Command definitions - maps keywords to agent groups
@@ -47,7 +47,7 @@ interface HistoryEntry {
   text: string
 }
 
-export function ZenithCLI({ onFilter }: ZenithCLIProps) {
+export function ZenithCLI({ onFilter, onResponse }: ZenithCLIProps) {
   const [input, setInput] = useState('')
   const [history, setHistory] = useState<HistoryEntry[]>([
     { type: 'header', text: '╭──────────────────────────────────────────────────╮' },
@@ -103,7 +103,7 @@ export function ZenithCLI({ onFilter }: ZenithCLIProps) {
 
     // reset / show all
     if (trimmed === 'reset' || trimmed === 'show all') {
-      onFilter(null)
+      onFilter?.(null)
       addHistory([
         { type: 'blank', text: '' },
         { type: 'output', text: '  ✓ Filter cleared. Showing all 10 protocols.' },
@@ -178,7 +178,7 @@ export function ZenithCLI({ onFilter }: ZenithCLIProps) {
       const category = trimmed.replace('show ', '').trim()
       const mapping = COMMAND_MAP[category]
       if (mapping) {
-        onFilter(mapping.agentIds)
+        onFilter?.(mapping.agentIds)
         const matched = aiAgents.filter(a => mapping.agentIds.includes(a.id))
         addHistory([
           { type: 'blank', text: '' },
@@ -202,7 +202,7 @@ export function ZenithCLI({ onFilter }: ZenithCLIProps) {
         a.tagline.toLowerCase().includes(category)
       )
       if (matchedAgents.length > 0) {
-        onFilter(matchedAgents.map(a => a.id))
+        onFilter?.(matchedAgents.map(a => a.id))
         addHistory([
           { type: 'blank', text: '' },
           { type: 'output', text: `  ✓ Found ${matchedAgents.length} matching protocol(s):` },
@@ -237,7 +237,7 @@ export function ZenithCLI({ onFilter }: ZenithCLIProps) {
         a.tags.some(t => t.includes(query))
       )
       if (matchedAgents.length > 0) {
-        onFilter(matchedAgents.map(a => a.id))
+        onFilter?.(matchedAgents.map(a => a.id))
         addHistory([
           { type: 'blank', text: '' },
           { type: 'output', text: `  ✓ Located ${matchedAgents.length} protocol(s):` },

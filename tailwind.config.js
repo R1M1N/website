@@ -5,6 +5,13 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    { pattern: /neon-(cyan|purple|green|blue|orange|pink|indigo|teal|yellow|red)/ },
+    { pattern: /bg-neon-(cyan|purple|green|blue|orange|pink|indigo|teal|yellow|red)/ },
+    { pattern: /text-neon-(cyan|purple|green|blue|orange|pink|indigo|teal|yellow|red)/ },
+    { pattern: /border-neon-(cyan|purple|green|blue|orange|pink|indigo|teal|yellow|red)/ },
+    { pattern: /shadow-glow-(cyan|purple|green|blue|orange|pink|indigo|teal|yellow|red)/ },
+  ],
   theme: {
     extend: {
       colors: {
