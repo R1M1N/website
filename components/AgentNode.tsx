@@ -16,16 +16,16 @@ interface AgentNodeProps {
 }
 
 const colorClasses = {
-  cyan: { glow: 'shadow-glow-cyan', glowHover: 'shadow-glow-cyan-hover', text: 'text-neon-cyan', border: 'border-neon-cyan/20', accent: 'bg-neon-cyan/10', connector: 'stroke-neon-cyan', bg: 'bg-neon-cyan/5' },
-  purple: { glow: 'shadow-glow-purple', glowHover: 'shadow-glow-purple-hover', text: 'text-neon-purple', border: 'border-neon-purple/20', accent: 'bg-neon-purple/10', connector: 'stroke-neon-purple', bg: 'bg-neon-purple/5' },
-  green: { glow: 'shadow-glow-green', glowHover: 'shadow-glow-green-hover', text: 'text-neon-green', border: 'border-neon-green/20', accent: 'bg-neon-green/10', connector: 'stroke-neon-green', bg: 'bg-neon-green/5' },
-  blue: { glow: 'shadow-glow-blue', glowHover: 'shadow-glow-blue-hover', text: 'text-neon-blue', border: 'border-neon-blue/20', accent: 'bg-neon-blue/10', connector: 'stroke-neon-blue', bg: 'bg-neon-blue/5' },
-  orange: { glow: 'shadow-glow-orange', glowHover: 'shadow-glow-orange-hover', text: 'text-orange-400', border: 'border-orange-400/20', accent: 'bg-orange-400/10', connector: 'stroke-orange-400', bg: 'bg-orange-400/5' },
-  pink: { glow: 'shadow-glow-pink', glowHover: 'shadow-glow-pink-hover', text: 'text-pink-400', border: 'border-pink-400/20', accent: 'bg-pink-400/10', connector: 'stroke-pink-400', bg: 'bg-pink-400/5' },
-  indigo: { glow: 'shadow-glow-indigo', glowHover: 'shadow-glow-indigo-hover', text: 'text-indigo-400', border: 'border-indigo-400/20', accent: 'bg-indigo-400/10', connector: 'stroke-indigo-400', bg: 'bg-indigo-400/5' },
-  teal: { glow: 'shadow-glow-teal', glowHover: 'shadow-glow-teal-hover', text: 'text-teal-400', border: 'border-teal-400/20', accent: 'bg-teal-400/10', connector: 'stroke-teal-400', bg: 'bg-teal-400/5' },
-  yellow: { glow: 'shadow-glow-yellow', glowHover: 'shadow-glow-yellow-hover', text: 'text-yellow-400', border: 'border-yellow-400/20', accent: 'bg-yellow-400/10', connector: 'stroke-yellow-400', bg: 'bg-yellow-400/5' },
-  red: { glow: 'shadow-glow-red', glowHover: 'shadow-glow-red-hover', text: 'text-red-400', border: 'border-red-400/20', accent: 'bg-red-400/10', connector: 'stroke-red-400', bg: 'bg-red-400/5' }
+  cyan: { glow: 'shadow-glow-cyan', glowHover: 'shadow-glow-cyan-hover', text: 'text-neon-cyan', border: 'border-neon-cyan/20', accent: 'bg-neon-cyan/10', connector: 'stroke-neon-cyan', bg: 'bg-neon-cyan/5', bullet: 'bg-neon-cyan' },
+  purple: { glow: 'shadow-glow-purple', glowHover: 'shadow-glow-purple-hover', text: 'text-neon-purple', border: 'border-neon-purple/20', accent: 'bg-neon-purple/10', connector: 'stroke-neon-purple', bg: 'bg-neon-purple/5', bullet: 'bg-neon-purple' },
+  green: { glow: 'shadow-glow-green', glowHover: 'shadow-glow-green-hover', text: 'text-neon-green', border: 'border-neon-green/20', accent: 'bg-neon-green/10', connector: 'stroke-neon-green', bg: 'bg-neon-green/5', bullet: 'bg-neon-green' },
+  blue: { glow: 'shadow-glow-blue', glowHover: 'shadow-glow-blue-hover', text: 'text-neon-blue', border: 'border-neon-blue/20', accent: 'bg-neon-blue/10', connector: 'stroke-neon-blue', bg: 'bg-neon-blue/5', bullet: 'bg-neon-blue' },
+  orange: { glow: 'shadow-glow-orange', glowHover: 'shadow-glow-orange-hover', text: 'text-orange-400', border: 'border-orange-400/20', accent: 'bg-orange-400/10', connector: 'stroke-orange-400', bg: 'bg-orange-400/5', bullet: 'bg-orange-400' },
+  pink: { glow: 'shadow-glow-pink', glowHover: 'shadow-glow-pink-hover', text: 'text-pink-400', border: 'border-pink-400/20', accent: 'bg-pink-400/10', connector: 'stroke-pink-400', bg: 'bg-pink-400/5', bullet: 'bg-pink-400' },
+  indigo: { glow: 'shadow-glow-indigo', glowHover: 'shadow-glow-indigo-hover', text: 'text-indigo-400', border: 'border-indigo-400/20', accent: 'bg-indigo-400/10', connector: 'stroke-indigo-400', bg: 'bg-indigo-400/5', bullet: 'bg-indigo-400' },
+  teal: { glow: 'shadow-glow-teal', glowHover: 'shadow-glow-teal-hover', text: 'text-teal-400', border: 'border-teal-400/20', accent: 'bg-teal-400/10', connector: 'stroke-teal-400', bg: 'bg-teal-400/5', bullet: 'bg-teal-400' },
+  yellow: { glow: 'shadow-glow-yellow', glowHover: 'shadow-glow-yellow-hover', text: 'text-yellow-400', border: 'border-yellow-400/20', accent: 'bg-yellow-400/10', connector: 'stroke-yellow-400', bg: 'bg-yellow-400/5', bullet: 'bg-yellow-400' },
+  red: { glow: 'shadow-glow-red', glowHover: 'shadow-glow-red-hover', text: 'text-red-400', border: 'border-red-400/20', accent: 'bg-red-400/10', connector: 'stroke-red-400', bg: 'bg-red-400/5', bullet: 'bg-red-400' }
 }
 
 export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHover, onSelect }: AgentNodeProps) {
@@ -34,10 +34,21 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
   const IconComponent = (Icons as any)[agent.icon] || Icons.Bot
   const colors = colorClasses[agent.color]
 
+  // Vertical placement logic
   const isBottomHalf = agent.position.y > 200 
   const cardPositionClass = isBottomHalf 
     ? "bottom-full mb-6 origin-bottom" 
     : "top-full mt-6 origin-top"
+
+  // Horizontal placement logic to prevent edge overflow
+  const isFarRight = agent.position.x > 700
+  const isFarLeft = agent.position.x < 300
+  
+  const horizontalAlignmentStyle = isFarRight 
+    ? "right-0 translate-x-0" 
+    : isFarLeft 
+      ? "left-0 translate-x-0" 
+      : "left-1/2 -translate-x-1/2"
 
   const handleClick = () => {
     if (clickTimeout) {
@@ -118,8 +129,9 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
             exit={{ opacity: 0, scale: 0.8, y: isBottomHalf ? 10 : -10 }}
             transition={{ duration: 0.2 }}
             className={cn(
-              "absolute left-1/2 transform -translate-x-1/2 w-96 bg-black rounded-2xl p-6 border z-[60] shadow-2xl",
+              "absolute w-96 bg-black rounded-2xl p-6 border z-[60] shadow-2xl",
               cardPositionClass,
+              horizontalAlignmentStyle,
               colors.border, 
               "border-opacity-50"
             )}
@@ -162,7 +174,7 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
               </div>
               
               <div className="mt-3">
-                <span className={cn("px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide rounded-full border inline-block", statusColors[agent.status])}>
+                <span className={cn("px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide rounded-full border inline-block", statusColors[agent.status as keyof typeof statusColors])}>
                   {agent.status}
                 </span>
               </div>
@@ -177,7 +189,7 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
             {agent.metrics && (
               <div className="grid grid-cols-2 gap-2 mb-5">
                 {agent.metrics.map((metric, index) => (
-                  <div key={index} className={cn("p-2.5 rounded-lg bg-white/5 border border-white/5", colors.accent.replace('bg-', 'hover:bg-'))}>
+                  <div key={index} className={cn("p-2.5 rounded-lg bg-white/5 border border-white/5")}>
                     <div className={cn("text-lg font-bold leading-none mb-1", colors.text)}>{metric.value}</div>
                     <div className="text-[10px] text-gray-400 uppercase tracking-wider font-medium">{metric.label}</div>
                   </div>
@@ -191,7 +203,7 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
               <ul className="space-y-1.5">
                 {agent.features.slice(0, 3).map((feature, index) => (
                   <li key={index} className="text-xs text-gray-300 flex items-center gap-2">
-                    <div className={cn("w-1.5 h-1.5 rounded-full", colors.bg.replace('bg-', 'bg-'))} />
+                    <div className={cn("w-1.5 h-1.5 rounded-full", colors.bullet, "opacity-60")} />
                     {feature}
                   </li>
                 ))}
