@@ -47,7 +47,8 @@ interface HistoryEntry {
   text: string
 }
 
-export function ZenithCLI({ onFilter, onResponse }: ZenithCLIProps) {
+export default function ZenithCLI({ onFilter, onResponse }: ZenithCLIProps) {
+  const [isMounted, setIsMounted] = useState(false)
   const [input, setInput] = useState('')
   const [history, setHistory] = useState<HistoryEntry[]>([
     { type: 'header', text: '╭──────────────────────────────────────────────────╮' },
@@ -56,10 +57,13 @@ export function ZenithCLI({ onFilter, onResponse }: ZenithCLIProps) {
     { type: 'header', text: '╰──────────────────────────────────────────────────╯' },
     { type: 'blank', text: '' },
   ])
+  const [isProcessing, setIsProcessing] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  const [isProcessing, setIsProcessing] = useState(false)
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -72,30 +76,29 @@ export function ZenithCLI({ onFilter, onResponse }: ZenithCLIProps) {
   }, [])
 
   const processCommand = useCallback(async (cmd: string) => {
-    const trimmed = cmd.trim().toLowerCase()
-    addHistory([{ type: 'input', text: cmd }])
-
+    const trimmed = cmd.toLowerCase().trim()
     if (!trimmed) return
 
-    // help
+    addHistory([{ type: 'input', text: cmd }])
+    
+    // Commands
     if (trimmed === 'help') {
       addHistory([
         { type: 'blank', text: '' },
-        { type: 'header', text: '──── Available Commands ─────────────────────────' },
+        { type: 'header', text: '──── Available Commands ────────────────────────' },
         { type: 'blank', text: '' },
-        { type: 'output', text: '  show <category>  — Highlight agents by category' },
-        { type: 'output', text: '  categories       — List all available categories' },
-        { type: 'output', text: '  list             — List all active protocols' },
-        { type: 'output', text: '  find <name>      — Search agent by name or tag' },
-        { type: 'output', text: '  status           — Show system diagnostics' },
-        { type: 'output', text: '  clear            — Clear terminal output' },
-        { type: 'output', text: '  reset            — Remove filters, show all agents' },
+        { type: 'output', text: '  list          Display all active protocols' },
+        { type: 'output', text: '  status        Kernel health & agent synchronization' },
+        { type: 'output', text: '  categories    Show specialized agent groups' },
+        { type: 'output', text: '  show <cat>    Filter mindmap by category' },
+        { type: 'output', text: '  find <query>  Search for specific agent' },
+        { type: 'output', text: '  reset         Clear all filters' },
+        { type: 'output', text: '  clear         Wipe terminal scrollback' },
         { type: 'blank', text: '' },
       ])
       return
     }
 
-    // clear
     if (trimmed === 'clear') {
       setHistory([])
       return
@@ -289,6 +292,8 @@ export function ZenithCLI({ onFilter, onResponse }: ZenithCLIProps) {
     }
   }
 
+  if (!isMounted) return null
+
   return (
     <motion.div
       layout
@@ -312,7 +317,7 @@ export function ZenithCLI({ onFilter, onResponse }: ZenithCLIProps) {
         </div>
       </div>
 
-      {/* Terminal Body — Always visible */}
+      {/* Terminal Body */}
       <div className="bg-[#060609] border border-white/10 rounded-b-xl overflow-hidden">
         {/* Scrollable History */}
         <div

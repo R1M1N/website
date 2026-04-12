@@ -4,7 +4,7 @@ import ZenithShowcase from '@/components/ZenithShowcase'
 import { AboutSection } from '@/components/AboutSection'
 import { ContactSection } from '@/components/ContactSection'
 import { ParticleBackground } from '@/components/ParticleBackground'
-import { ZenithCLI } from '@/components/ZenithCLI'
+import ZenithCLI from '@/components/ZenithCLI'
 
 export default function Home() {
   return (

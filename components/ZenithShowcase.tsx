@@ -49,6 +49,14 @@ const ORGANS = [
 ]
 
 export default function ZenithShowcase() {
+  const [isMounted, setIsMounted] = (require('react')).useState(false)
+  
+  (require('react')).useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) return null
+
   return (
     <section className="py-24 px-6 relative overflow-hidden bg-[#020205]">
       {/* Background Decorative Grid */}
