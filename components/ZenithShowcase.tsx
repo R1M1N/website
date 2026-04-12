@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import { Brain, Eye, Box, Hammer, Shield, Radio, Calendar, Activity, Zap } from 'lucide-react'
 
 const ORGANS = [
@@ -49,9 +50,9 @@ const ORGANS = [
 ]
 
 export default function ZenithShowcase() {
-  const [isMounted, setIsMounted] = (require('react')).useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   
-  (require('react')).useEffect(() => {
+  useEffect(() => {
     setIsMounted(true)
   }, [])
 

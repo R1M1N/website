@@ -1,3 +1,5 @@
+'use client'
+
 import { HeroSection } from '@/components/HeroSection'
 import { MindMap } from '@/components/MindMap'
 import ZenithShowcase from '@/components/ZenithShowcase'
@@ -9,11 +11,6 @@ import ZenithCLI from '@/components/ZenithCLI'
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-bg-primary overflow-hidden">
-      {/* Build Signal - Remove after verification */}
-      <div className="absolute top-0 left-0 z-[9999] px-2 py-1 bg-neon-cyan/80 text-black font-mono text-[10px] uppercase">
-        System Ver: 2.0.4 - Linked to Cortex
-      </div>
-
       <ParticleBackground />
       
       <HeroSection />
