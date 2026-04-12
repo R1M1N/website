@@ -1,5 +1,6 @@
 import { HeroSection } from '@/components/HeroSection'
 import { MindMap } from '@/components/MindMap'
+import ZenithShowcase from '@/components/ZenithShowcase'
 import { AboutSection } from '@/components/AboutSection'
 import { ContactSection } from '@/components/ContactSection'
 import { ParticleBackground } from '@/components/ParticleBackground'
@@ -11,6 +12,7 @@ export default function Home() {
       
       <HeroSection />
       <MindMap />
+      <ZenithShowcase />
       <AboutSection />
       <ContactSection />
     </main>

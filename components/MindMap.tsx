@@ -1,14 +1,20 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { aiAgents, connectionMap, type AIAgent } from '@/lib/agents'
 import { AgentNode } from './AgentNode'
 import { ConnectionLines } from './ConnectionLines'
+import { ZenithCLI } from './ZenithCLI'
 
 export function MindMap() {
   const [hoveredAgent, setHoveredAgent] = useState<string | null>(null)
   const [selectedAgent, setSelectedAgent] = useState<AIAgent | null>(null)
+  const [filteredAgentIds, setFilteredAgentIds] = useState<string[] | null>(null)
+
+  const handleCLIFilter = useCallback((agentIds: string[] | null) => {
+    setFilteredAgentIds(agentIds)
+  }, [])
 
   return (
     <section id="mindmap" className="relative min-h-screen py-20 z-10 flex items-center justify-center bg-bg-primary overflow-hidden">
@@ -41,17 +47,27 @@ export function MindMap() {
           />
 
           {/* Agent Nodes Layer */}
-          {aiAgents.map((agent) => (
-            <AgentNode
-              key={agent.id}
-              agent={agent}
-              isHovered={hoveredAgent === agent.id}
-              isSelected={selectedAgent?.id === agent.id}
-              onHover={setHoveredAgent}
-              onSelect={setSelectedAgent}
-            />
-          ))}
+          {aiAgents.map((agent) => {
+            const isDimmed = filteredAgentIds !== null && !filteredAgentIds.includes(agent.id)
+            return (
+              <AgentNode
+                key={agent.id}
+                agent={agent}
+                isHovered={hoveredAgent === agent.id}
+                isSelected={selectedAgent?.id === agent.id}
+                isDimmed={isDimmed}
+                onHover={setHoveredAgent}
+                onSelect={setSelectedAgent}
+              />
+            )
+          })}
         </div>
+
+        {/* ZenithOS CLI Dock */}
+        <ZenithCLI 
+          onFilter={handleCLIFilter}
+          onResponse={() => {}}
+        />
 
       </div>
     </section>

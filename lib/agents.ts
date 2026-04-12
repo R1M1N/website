@@ -11,6 +11,7 @@ export interface AIAgent {
   status: 'live' | 'beta' | 'development';
   githubUrl: string;
   demoUrl?: string;
+  tags: string[];
   metrics?: {
     label: string;
     value: string;
@@ -37,6 +38,7 @@ export const aiAgents: AIAgent[] = [
     ],
     status: 'beta',
     githubUrl: 'https://github.com/R1M1N/pentesting-agent',
+    tags: ['security', 'pentest', 'hacking', 'offensive', 'network'],
     metrics: [
       { label: 'Tools Supported', value: '10+' },
       { label: 'Automation', value: 'Full' }
@@ -61,6 +63,7 @@ export const aiAgents: AIAgent[] = [
     ],
     status: 'live',
     githubUrl: 'https://github.com/R1M1N/phone_assistant_agent',
+    tags: ['voice', 'phone', 'assistant', 'communication', 'asr'],
     metrics: [
       { label: 'Response Latency', value: '<200ms' },
       { label: 'Transcription Acc', value: '98.5%' }
@@ -85,6 +88,7 @@ export const aiAgents: AIAgent[] = [
     ],
     status: 'development',
     githubUrl: 'https://github.com/R1M1N/nexus-guard',
+    tags: ['security', 'defense', 'blockchain', 'threat', 'cyber'],
     metrics: [
       { label: 'Detection Time', value: '<1s' },
       { label: 'Accuracy', value: '99%' }
@@ -109,6 +113,7 @@ export const aiAgents: AIAgent[] = [
     ],
     status: 'live',
     githubUrl: 'https://github.com/R1M1N/tradesant',
+    tags: ['trading', 'finance', 'crypto', 'bitcoin', 'automation'],
     metrics: [
       { label: 'Backtest Return', value: '+ve' },
       { label: 'Strategies', value: '4' }
@@ -133,6 +138,7 @@ export const aiAgents: AIAgent[] = [
     ],
     status: 'beta',
     githubUrl: 'https://github.com/R1M1N/research_paper_explainer',
+    tags: ['research', 'nlp', 'rag', 'analysis', 'paper'],
     metrics: [
       { label: 'Processing', value: 'Real-time' },
       { label: 'Search', value: 'Semantic' }
@@ -157,6 +163,7 @@ export const aiAgents: AIAgent[] = [
     ],
     status: 'beta',
     githubUrl: 'https://github.com/R1M1N/s.i.y.a',
+    tags: ['assistant', 'llm', 'mcp', 'productivity', 'voice'],
     metrics: [
       { label: 'Latency', value: '<100ms' },
       { label: 'Memory', value: 'Persistent' }
@@ -181,6 +188,7 @@ export const aiAgents: AIAgent[] = [
     ],
     status: 'development',
     githubUrl: 'https://github.com/R1M1N/secure-messaging-app',
+    tags: ['security', 'messaging', 'encryption', 'p2p', 'communication'],
     metrics: [
       { label: 'Encryption', value: 'Signal' },
       { label: 'Offline', value: 'Mesh' }
@@ -205,6 +213,7 @@ export const aiAgents: AIAgent[] = [
     ],
     status: 'beta',
     githubUrl: 'https://github.com/R1M1N/crawler',
+    tags: ['scraping', 'web', 'data', 'crawler', 'automation'],
     metrics: [
       { label: 'Throughput', value: '10k req/s' },
       { label: 'Bypass Rate', value: '95%' }
@@ -229,6 +238,7 @@ export const aiAgents: AIAgent[] = [
     ],
     status: 'live',
     githubUrl: 'https://github.com/R1M1N/sf-cycle',
+    tags: ['development', 'code', 'sdlc', 'devops', 'automation'],
     metrics: [
       { label: 'Dev Time', value: '2-5 min' },
       { label: 'Coverage', value: 'Full SDLC' }
@@ -253,6 +263,7 @@ export const aiAgents: AIAgent[] = [
     ],
     status: 'live',
     githubUrl: 'https://github.com/R1M1N/agentic-vision',
+    tags: ['vision', 'cv', 'detection', 'tracking', 'ml'],
     metrics: [
       { label: 'Inference', value: 'Real-time' },
       { label: 'Tracking', value: 'Multi-Object' }

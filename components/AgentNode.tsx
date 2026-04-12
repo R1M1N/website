@@ -10,6 +10,7 @@ interface AgentNodeProps {
   agent: AIAgent
   isHovered: boolean
   isSelected: boolean
+  isDimmed?: boolean
   onHover: (id: string | null) => void
   onSelect: (agent: AIAgent | null) => void
 }
@@ -27,7 +28,7 @@ const colorClasses = {
   red: { glow: 'shadow-glow-red', glowHover: 'shadow-glow-red-hover', text: 'text-red-400', border: 'border-red-400/20', accent: 'bg-red-400/10', connector: 'stroke-red-400', bg: 'bg-red-400/5' }
 }
 
-export function AgentNode({ agent, isHovered, isSelected, onHover, onSelect }: AgentNodeProps) {
+export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHover, onSelect }: AgentNodeProps) {
   const [clickTimeout, setClickTimeout] = useState<NodeJS.Timeout | null>(null)
   
   const IconComponent = (Icons as any)[agent.icon] || Icons.Bot
@@ -60,11 +61,11 @@ export function AgentNode({ agent, isHovered, isSelected, onHover, onSelect }: A
 
   return (
     <motion.div
-      className={cn("absolute", isHovered ? "z-50" : "z-10")}
+      className={cn("absolute transition-opacity duration-500", isHovered ? "z-50" : "z-10", isDimmed && "pointer-events-none")}
       style={{ left: agent.position.x, top: agent.position.y }}
       initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, delay: Math.random() * 0.5 }}
+      animate={{ opacity: isDimmed ? 0.15 : 1, scale: isDimmed ? 0.9 : 1 }}
+      transition={{ duration: 0.5 }}
       onHoverStart={() => onHover(agent.id)}
       onHoverEnd={() => onHover(null)}
       onClick={handleClick}
