@@ -5,7 +5,6 @@ import { useState, useCallback } from 'react'
 import { aiAgents, connectionMap, type AIAgent } from '@/lib/agents'
 import { AgentNode } from './AgentNode'
 import { ConnectionLines } from './ConnectionLines'
-import ZenithCLI from './ZenithCLI'
 
 export function MindMap() {
   const [hoveredAgent, setHoveredAgent] = useState<string | null>(null)
@@ -62,12 +61,6 @@ export function MindMap() {
             )
           })}
         </div>
-
-        {/* ZenithOS CLI Dock */}
-        <ZenithCLI 
-          onFilter={handleCLIFilter}
-          onResponse={() => {}}
-        />
 
       </div>
     </section>
