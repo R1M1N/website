@@ -21,9 +21,6 @@ export default function Home() {
         <ZenithShowcase />
         <AboutSection />
         <ContactSection />
-        <div className="pb-24">
-          <ZenithCLI onFilter={() => {}} />
-        </div>
       </div>
     </main>
   )
