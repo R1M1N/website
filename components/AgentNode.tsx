@@ -50,7 +50,7 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
       ? "left-0 translate-x-0" 
       : "left-1/2 -translate-x-1/2"
 
-  const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleClick = (e: any) => {
     e.stopPropagation();
     onSelect(isSelected ? null : agent)
   }
@@ -150,7 +150,7 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
                       href={agent.githubUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={(e: any) => e.stopPropagation()}
                       className={cn(
                         "flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 hover:scale-110 active:scale-95",
                         colors.border,
