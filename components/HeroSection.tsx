@@ -45,7 +45,7 @@ export function HeroSection() {
             className="relative mb-8"
           >
             <h2 className="text-2xl md:text-3xl text-neon-cyan font-medium tracking-wide">
-              Senior AI Engineer
+              AI Systems Architect
             </h2>
             <motion.div
               className="absolute inset-0 bg-neon-cyan/20 blur-xl"

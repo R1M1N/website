@@ -7,19 +7,19 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono' })
 
 export const metadata: Metadata = {
-  title: 'Raman Thakur - Senior AI Engineer',
-  description: 'Senior AI Engineer specializing in autonomous AI systems, computer vision, NLP, and multi-agent architectures. Building production-ready AI solutions.',
+  title: 'Raman Thakur - AI Systems Architect',
+  description: 'AI Systems Architect specializing in autonomous AI systems, computer vision, NLP, and multi-agent architectures. Building production-ready AI solutions.',
   keywords: 'AI Engineer, Machine Learning, Computer Vision, NLP, Multi-Agent Systems, Python, FastAPI, React',
   authors: [{ name: 'Raman Thakur' }],
   openGraph: {
-    title: 'Raman Thakur - Senior AI Engineer',
+    title: 'Raman Thakur - AI Systems Architect',
     description: 'Building autonomous AI agents for real-world applications',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Raman Thakur - Senior AI Engineer',
+    title: 'Raman Thakur - AI Systems Architect',
     description: 'Building autonomous AI agents for real-world applications',
   },
   viewport: 'width=device-width, initial-scale=1',

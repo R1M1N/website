@@ -50,18 +50,9 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
       ? "left-0 translate-x-0" 
       : "left-1/2 -translate-x-1/2"
 
-  const handleClick = () => {
-    if (clickTimeout) {
-      clearTimeout(clickTimeout)
-      setClickTimeout(null)
-      onSelect(isSelected ? null : agent)
-    } else {
-      const timeout = setTimeout(() => {
-        onSelect(isSelected ? null : agent)
-        setClickTimeout(null)
-      }, 200)
-      setClickTimeout(timeout)
-    }
+  const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
+    e.stopPropagation();
+    onSelect(isSelected ? null : agent)
   }
 
   const statusColors = {
@@ -72,7 +63,7 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
 
   return (
     <motion.div
-      className={cn("absolute transition-opacity duration-500", isHovered ? "z-50" : "z-10", isDimmed && "pointer-events-none")}
+      className={cn("absolute transition-opacity duration-500", (isHovered || isSelected) ? "z-50" : "z-10", isDimmed && "pointer-events-none")}
       style={{ left: agent.position.x, top: agent.position.y }}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: isDimmed ? 0.15 : 1, scale: isDimmed ? 0.9 : 1 }}
@@ -80,13 +71,14 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
       onHoverStart={() => onHover(agent.id)}
       onHoverEnd={() => onHover(null)}
       onClick={handleClick}
+      onTap={handleClick}
     >
       {/* Node Circle */}
       <motion.div
         className={cn(
           "w-16 h-16 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 border relative z-20",
           colors.border,
-          isHovered ? colors.glowHover : "bg-black/20 backdrop-blur-sm"
+          (isHovered || isSelected) ? colors.glowHover : "bg-black/20 backdrop-blur-sm"
         )}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -95,7 +87,7 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
       </motion.div>
 
       {/* Node Label */}
-      {!isHovered && (
+      {!(isHovered || isSelected) && (
         <motion.div
           className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center pointer-events-none"
           initial={{ opacity: 1 }}
@@ -109,7 +101,7 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
 
       {/* Active Pulse Ring */}
       <AnimatePresence>
-        {isHovered && (
+        {(isHovered || isSelected) && (
           <motion.div className="absolute inset-0 z-10 pointer-events-none">
              <motion.div 
                className={cn("absolute inset-0 rounded-full border opacity-0", colors.border)}
@@ -122,7 +114,7 @@ export function AgentNode({ agent, isHovered, isSelected, isDimmed = false, onHo
 
       {/* Full Detail Card */}
       <AnimatePresence>
-        {isHovered && (
+        {(isHovered || isSelected) && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: isBottomHalf ? 10 : -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
